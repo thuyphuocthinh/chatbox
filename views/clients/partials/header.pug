@@ -2,7 +2,7 @@
     .container 
         .header-container
             .header-logo 
-                span 
+                span.navbar-toggler(type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasNavbar' aria-controls='offcanvasNavbar')
                     i(class="fa-solid fa-bars")
                 a(href="/") TourGuideBox 
 
@@ -13,6 +13,41 @@
                         id="change-mode"
                     )
                 
-                .header-buttons 
+                .header-buttons.d-sm-flex.d-none 
                     a(href="/login"  class="button button-login") Log in  
                     a(href="/signup" class="button button-signup") Sign up  
+    
+  
+    #offcanvasNavbar.offcanvas.offcanvas-end(tabindex='-1' aria-labelledby='offcanvasNavbarLabel')
+        .offcanvas-header
+            a(href="/") TourGuideBox 
+            button.btn-close(type='button' data-bs-dismiss='offcanvas' aria-label='Close')
+        .offcanvas-body
+            div.canvas-body-top
+                p.mb-3 
+                    | This is a project developed by DTU ADP K27 STUDENTS after taking Python Bootcamp course 
+                    | instructed by KITS
+
+                p.mb-3 
+                    | TourGuideBox is a chatbox model that replies to traveler's questions when visiting Danang.
+                    | Like the routine, where to go, what to eat, how much to spend...
+
+                p.mb-2   Technology used
+                ul 
+                    li HTML
+                    li CSS
+                    li JavaScript 
+                    li Express
+                    li Python
+                    li OpenAI model
+                    li Docker 
+            div.canvas-body-bottom
+                .canvas-buttons.d-flex.d-sm-none.mb-3.gap-3.justify-content-center 
+                    a(href="/login"  class="button button-login") Log in  
+                    a(href="/signup" class="button button-signup") Sign up  
+                p &#169; 2024 Duy Tan Univeristy vs KITS, Danang
+
+            
+
+
+                

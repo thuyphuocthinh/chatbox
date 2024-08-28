@@ -6,14 +6,20 @@
     --height: 60px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    transition: all .1s linear;
 }
 
 body {
     font-size: 62.5%;
+    transition: all .5s;
 }
 
 a {
@@ -32,12 +38,9 @@ p {
     padding: 0;
 }
 
-body {
-    background-color: var(--gray-color);
-    transition: all .5s;
-}
+/* mode */
 
-body .root.light{
+body .root.light {
     background-color: var(--gray-color);
     color: var(--black-color);
 }
@@ -47,23 +50,31 @@ body .root.dark {
     color: var(--white-color);
 }
 
-body .root.dark a{
+body .root.dark a {
     color: var(--white-color);
 }
 
-body .root.dark .button.button.button-login{
+body .root.dark .button.button.button-login {
+    background-color: var(--white-color);
+    color: var(--black-color);
+    border-color: var(--white-color);
+}
+
+body .root.dark .box-user {
     background-color: var(--white-color);
     color: var(--black-color);
 }
 
-body .root.dark .box-user{
-    background-color: var(--white-color);
-    color: var(--black-color);
-}
-
-body .root.dark .chat-input-container .chat-input i{
+body .root.dark .chat-input-container .chat-input i {
     background-color: var(--black-color);
     color: var(--white-color);
+}
+
+
+body .root.dark #offcanvasNavbar a,
+p,
+li {
+    color: var(--black-color);
 }
 
 /* buttons */
@@ -80,7 +91,34 @@ body .root.dark .chat-input-container .chat-input i{
     color: var(--white-color);
 }
 
+.button-disabled {
+    cursor: no-drop !important;
+}
 
+/* scroll bar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body .root.dark::-webkit-scrollbar-track {
+    background-color: var(--black-color) !important;
+}
 
 /* header */
 
@@ -88,6 +126,7 @@ body .root.dark .chat-input-container .chat-input i{
     display: flex;
     flex-direction: column;
     height: 100vh;
+    position: static;
 }
 
 .header {
@@ -111,7 +150,8 @@ body .root.dark .chat-input-container .chat-input i{
     gap: 1.5rem;
 }
 
-.header-container .header-logo a, span {
+.header-container .header-logo a,
+span {
     font-weight: bold;
     font-size: 1.2rem;
     cursor: pointer;
@@ -142,6 +182,43 @@ body .root.dark .chat-input-container .chat-input i{
     gap: .5rem;
 }
 
+#offcanvasNavbar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#offcanvasNavbar .offcanvas-header a {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+#offcanvasNavbar a,
+p {
+    font-size: 1rem !important;
+    text-align: justify;
+}
+
+#offcanvasNavbar li {
+    font-size: 1rem;
+}
+
+.offcanvas-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.offcanvas-body .canvas-body-top {
+    flex: 1;
+}
+
+.offcanvas-body .canvas-body-bottom p {
+    text-align: center;
+    font-size: .8rem !important;
+}
+
 /* main */
 
 .chat-display-container {
@@ -149,6 +226,7 @@ body .root.dark .chat-input-container .chat-input i{
     width: 100%;
     overflow-y: auto;
     height: 520px;
+    padding: 0 1rem;
 }
 
 .chat-display {
@@ -167,12 +245,15 @@ body .root.dark .chat-input-container .chat-input i{
     width: 250px;
     padding: 1rem;
     border-radius: 10px;
+    text-align: justify;
     margin-left: auto;
+    margin-top: 2rem;
 }
 
 .box-ai {
     margin: 2rem 0;
     margin-left: 1rem;
+    text-align: justify;
 }
 
 .chat-input-container {
@@ -190,21 +271,26 @@ body .root.dark .chat-input-container .chat-input i{
     border-radius: 25px;
 }
 
-.chat-input-container .chat-input i {
-    margin-right: 1.2rem;
-    cursor: pointer;
+.chat-input-container .chat-input button {
+    border: none;
+    background: transparent;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: var(--gray-color-100);
     display: flex;
+    cursor: pointer;
     align-items: center;
     justify-content: center;
+    margin-right: 1.2rem;
+}
+
+.chat-input-container .chat-input button i {
     font-size: 1rem;
     transition: all .5s;
 }
 
-.chat-input-container .chat-input i:hover {
+.chat-input-container .chat-input button i:hover {
     opacity: .8;
 }
 

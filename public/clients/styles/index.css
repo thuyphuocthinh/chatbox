@@ -54,6 +54,42 @@ body .root.dark a {
     color: var(--white-color);
 }
 
+body .root.dark p {
+    color: var(--white-color);
+}
+
+body .root.dark h1 {
+    color: var(--white-color);
+}
+
+body .root.dark h2 {
+    color: var(--white-color);
+}
+
+body .root.dark h3 {
+    color: var(--white-color);
+}
+
+body .root.dark h4 {
+    color: var(--white-color);
+}
+
+body .root.dark h5 {
+    color: var(--white-color);
+}
+
+body .root.dark h6 {
+    color: var(--white-color);
+}
+
+body .root.dark div {
+    color: var(--white-color);
+}
+
+body .root.dark li {
+    color: var(--white-color);
+}
+
 body .root.dark .button.button.button-login {
     background-color: var(--white-color);
     color: var(--black-color);
@@ -65,17 +101,18 @@ body .root.dark .box-user {
     color: var(--black-color);
 }
 
-body .root.dark .chat-input-container .chat-input i {
+body .root.dark .chat-input-container .chat-input button {
     background-color: var(--black-color);
     color: var(--white-color);
 }
 
 
 body .root.dark #offcanvasNavbar a,
-p,
-li {
+body .root.dark #offcanvasNavbar p,
+body .root.dark #offcanvasNavbar li {
     color: var(--black-color);
 }
+
 
 /* buttons */
 .button {
@@ -238,6 +275,7 @@ p {
     flex-direction: column;
     font-size: 1rem;
     padding: .5rem 0;
+    position: relative;
 }
 
 .box-user {
@@ -254,7 +292,111 @@ p {
     margin: 2rem 0;
     margin-left: 1rem;
     text-align: justify;
+    font-size: 1rem;
 }
+
+@keyframes d5-light-mode {
+    0% {
+        box-shadow: 20px 0 #000, -20px 0 #0002;
+        background: #000
+    }
+
+    33% {
+        box-shadow: 20px 0 #000, -20px 0 #0002;
+        background: #0002
+    }
+
+    66% {
+        box-shadow: 20px 0 #0002, -20px 0 #000;
+        background: #0002
+    }
+
+    100% {
+        box-shadow: 20px 0 #0002, -20px 0 #000;
+        background: #000
+    }
+}
+
+.waiting-response {
+    width: 10px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: d5-light-mode 1s infinite linear alternate;
+    display: none;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+
+@keyframes d5-dark-mode {
+    0% {
+        box-shadow: 20px 0 #fff, -20px 0 #fff2;
+        background: #fff
+    }
+
+    33% {
+        box-shadow: 20px 0 #fff, -20px 0 #fff2;
+        background: #fff2
+    }
+
+    66% {
+        box-shadow: 20px 0 #fff2, -20px 0 #fff;
+        background: #fff2
+    }
+
+    100% {
+        box-shadow: 20px 0 #fff2, -20px 0 #fff;
+        background: #fff
+    }
+}
+
+body .root.dark .waiting-response {
+    width: 10px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: d5-dark-mode 1s infinite linear alternate;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 50%
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--black-color);
+    }
+}
+
+.box-ai.intro {
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid var(--black-color);
+    /* The typwriter cursor */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    margin: 0 auto;
+    /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .1rem;
+    /* Adjust as needed */
+    animation:
+        typing 3s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+
 
 .chat-input-container {
     padding: 1rem;

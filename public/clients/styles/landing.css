@@ -1,0 +1,217 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all .1s linear;
+}
+
+:root {
+    --black-color: #000;
+    --gray-color: #f3f3f3;
+    --gray-color-100: #cfcfcf;
+    --white-color: #fff;
+    --height: 60px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 62.5%;
+    transition: all .5s;
+}
+
+
+a {
+    text-decoration: none;
+    color: var(--black-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* headers */
+
+.header-ladi {
+    padding: 1rem 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    /* background-color: var(--white-color); */
+}
+
+.header-ladi-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-ladi a {
+    font-size: 1rem;
+    color: var(--white-color);
+}
+
+.header-ladi .header-ladi-logo a {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.header-ladi .header-ladi-menu .header-ladi-ul {
+    display: flex;
+    align-items: center;
+}
+
+.header-ladi .header-ladi-menu .header-ladi-ul .header-ladi-li a {
+    display: inline-block;
+    padding: 0 1rem;
+}
+
+/* main */
+.main {
+    height: 100vh;
+}
+
+.main #carouselExampleCaptions {
+    height: 100%;
+}
+
+.main #carouselExampleCaptions .carousel-inner {
+    height: 100%;
+}
+
+.main #carouselExampleCaptions .carousel-inner .carousel-item {
+    height: 100%;
+    position: relative;
+}
+
+.main #carouselExampleCaptions .carousel-inner .carousel-item .bg-image {
+    background-size: cover !important;
+    height: 100% !important;
+    background-position: center center !important;
+}
+
+
+.main #carouselExampleCaptions .carousel-inner .carousel-item .bg-image-1 {
+    background: url("../images/caurong.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.main #carouselExampleCaptions .carousel-inner .carousel-item .bg-image-2 {
+    background: url("../images/beach.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.main #carouselExampleCaptions .carousel-inner .carousel-item .bg-image-3 {
+    background: url("../images/danang.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.main #carouselExampleCaptions .carousel-inner .carousel-item .bg-blur {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: var(--black-color);
+    opacity: .6;
+}
+
+.main #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-25%);
+    color: var(--white-color);
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(200%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+.main #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption h5 {
+    font-size: 2rem;
+    margin-bottom: .5rem;
+    animation-duration: .8s;
+    animation-fill-mode: both;
+    animation-name: fadeInDown;
+    animation-delay: 0.3s;
+}
+
+.main #carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption p {
+    font-size: 1.2rem;
+    animation-duration: .8s;
+    animation-fill-mode: both;
+    animation-name: fadeInUp;
+    animation-delay: 0.3s;
+}
+
+/* buttons */
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.button {
+    padding: .5rem 2rem;
+    border-radius: 2rem;
+    background-color: var(--white-color);
+    color: var(--black-color);
+    display: inline-block;
+    font-size: 1rem;
+    margin-top: 1.4rem;
+    font-weight: bold;
+    animation-duration: 1.2s;
+    animation-fill-mode: both;
+    animation-name: fade;
+    animation-delay: 0.3s;
+    transition: all .5s;
+}
+
+.button:hover {
+    background-color: var(--gray-color-100);
+    transform: scale(.9);
+}

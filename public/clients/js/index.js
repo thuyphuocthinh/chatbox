@@ -7,6 +7,8 @@ $(".chat-display-container").animate(
   1500
 );
 
+$(document).ready(() => {});
+
 // end scroll to bottom on load
 
 // start change mode
@@ -36,40 +38,19 @@ if (getChangeModeBtn) {
 
 // start send messages
 const sendButton = document.querySelector("#send-button");
-const msg = `Python đã được Guido van Rossum tạo ra vào những năm 1980[39] tại 
-  Trung tâm Toán học Tin học (Centrum Wiskunde & Informatica, CWI) ở Hà Lan như là một ngôn
-   ngữ kế tục ngôn ngữ ABC một ngôn ngữ được lấy cảm hứng từ SETL,[40] có khả năng xử lí
-    ngoại lệ và giao tiếp với hệ điều hành Amoeba Nó bắt đầu được triển khai vào tháng 12
-     năm 1989.[42] Van Rossum đã tự mình gánh vác trách nhiệm cho dự án, với
-      vai trò là nhà phát triển chính, cho đến ngày 12 tháng 7 năm 2018, khi ông 
-      thông báo rằng ông sẽ rời bỏ trách nhiệm của ông và cả danh hiệu Nhà độc tài 
-      nhân từ cho cuộc sống của Python, một danh hiệu mà cộng đồng Python đã trao tặng cho
-       ông vì sự tận tụy lâu dài của ông với vai trò là người ra quyết định chính cho dự án.[43]
-       Vào tháng 1 năm 2019, các nhà phát triển phần lõi Python đã bầu ra một Hội đồng chèo lái 
-       gồm năm thành viên để dẫn dắt dự án [44][45]`;
 const textAreaElement = document.querySelector('[name="message"]');
 const chatDisplayElement = document.querySelector(".chat-display");
+const chatInputContainer = document.querySelector(".chat-input-container");
+let converter = new showdown.Converter();
 
-function printResponse(chatDisplayElement) {
+function printResponse(answer, chatDisplayElement) {
   const boxAi = document.createElement("div");
   boxAi.classList.add("box");
   boxAi.classList.add("box-ai");
+  const html = converter.makeHtml(answer);
+  boxAi.innerHTML = html;
   chatDisplayElement.appendChild(boxAi);
-  const msgArr = msg.split(" ");
-  let i = 0;
-  let intervalId;
-  if (i < msgArr.length) {
-    intervalId = setInterval(() => {
-      boxAi.textContent += msgArr[i] + " ";
-      i++;
-
-      boxAi.scrollIntoView(true);
-
-      if (i >= msgArr.length) {
-        clearInterval(intervalId);
-      }
-    }, 50);
-  }
+  boxAi.scrollIntoView(true);
 }
 
 function printQuestion(content, chatDisplayElement) {
@@ -102,17 +83,48 @@ textAreaElement.addEventListener("keyup", (e) => {
   }
 });
 
+function addWaitingResponse(chatInputContainer) {
+  const waitingResponse = chatInputContainer.querySelector(".waiting-response");
+  waitingResponse.style.display = "block";
+}
+
+function removeWaitingResponse(chatInputContainer) {
+  const waitingResponse = chatInputContainer.querySelector(".waiting-response");
+  waitingResponse.style.display = "none";
+}
+
 function sendMessage(value) {
   if (sendButton) {
     sendButton.onclick = () => {
       printQuestion(value, chatDisplayElement);
+      const sendStr = {
+        prompt: value,
+      };
       textAreaElement.value = "";
       textAreaElement.focus();
       sendButton.classList.add("button-disabled");
       sendButton.disabled = true;
-      setTimeout(() => {
-        printResponse(chatDisplayElement);
-      }, 1000);
+
+      // display waiting response
+      addWaitingResponse(chatInputContainer);
+
+      // fetch API
+      fetch("http://localhost:3000/api/v1/chat/send-message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(sendStr),
+      })
+        .then((resp) => resp.json())
+        .then((result) => {
+          // hide waiting response
+          removeWaitingResponse(chatInputContainer);
+          // display answer
+          printResponse(result.data, chatDisplayElement);
+        })
+        .catch((error) => console.log(error));
     };
   }
 }

@@ -1,0 +1,67 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css")
+        link(rel="stylesheet", href="/clients/styles/landing.css")
+        title= pageTitle
+    body 
+
+        include ../../partials/header-ladi.pug     
+
+        .main 
+            #carouselExampleCaptions.carousel.slide(data-bs-ride='false')
+                .carousel-indicators
+                    button.active(type='button' data-bs-target='#carouselExampleCaptions' data-bs-slide-to='0' aria-current='true' aria-label='Slide 1')
+                    button(type='button' data-bs-target='#carouselExampleCaptions' data-bs-slide-to='1' aria-label='Slide 2')
+                    button(type='button' data-bs-target='#carouselExampleCaptions' data-bs-slide-to='2' aria-label='Slide 3')
+                
+                .carousel-inner
+                    .carousel-item.active
+                        .bg-image-1.bg-image
+                        .bg-blur
+                        .carousel-caption
+                            h5 Dragon Bridge
+                            p The most beautiful bridge in Danang 
+                            a(href="/chat" class="button button-chat") 
+                                i(
+                                    class="fa-solid fa-paper-plane"
+                                )               
+                                span(class="ms-2 d-inline-block") Chat now 
+                
+                    .carousel-item
+                        .bg-image-2.bg-image
+                        .bg-blur
+                        .carousel-caption
+                            h5 My Khe Beach
+                            p Top 10 most beautiful beaches in the world
+                            a(href="/chat" class="button button-chat") 
+                                i(
+                                    class="fa-solid fa-paper-plane"
+                                )               
+                                span(class="ms-2 d-inline-block") Chat now 
+
+                    .carousel-item
+                        .bg-image-3.bg-image
+                        .bg-blur
+                        .carousel-caption
+                            h5 Golden Bridge
+                            p The most unique bridge in Vietnam
+                            a(href="/chat" class="button button-chat") 
+                                i(
+                                    class="fa-solid fa-paper-plane"
+                                )               
+                                span(class="ms-2 d-inline-block") Chat now 
+
+                button.carousel-control-prev(type='button' data-bs-target='#carouselExampleCaptions' data-bs-slide='prev')
+                    span.carousel-control-prev-icon(aria-hidden='true')
+                    span.visually-hidden Previous
+                button.carousel-control-next(type='button' data-bs-target='#carouselExampleCaptions' data-bs-slide='next')
+                    span.carousel-control-next-icon(aria-hidden='true')
+                    span.visually-hidden Next
+
+        script(src="https://code.jquery.com/jquery-3.7.1.min.js") 
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js")
+        script(src="/clients/js/landing.js") 
